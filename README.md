@@ -16,7 +16,7 @@ client_id = "xxx"
     
 client_secret = "yyy"
 
-artist_id = "3gN8Ihw22Vt9mnK97gbwMQ?si=U2KUXd7fT6O-gjvnCz4MFA"
+artist_id = "zzz"
 ```
     
 Next you need to generate an access token, which is like authorisation to call the API (each access token is valid for an hour, after which a new one needs to be generated). Getting this access token requires calling a different endpoint of the Spotify Web API.
@@ -37,7 +37,7 @@ data = {
 # Make a post request to the endpoint using the varibales you just defined, and save this request in another variable. This request returns a status code indicating whether the API call was succesful (status code 200 indicates success)    
 token_request_response = requests.post(url, headers=headers, data=data)
 
-# To return data from the API call, rather than the status code, use token_request_response.json(). To make the values in the json easier to reference, save this as a variable 
+# To return data from the API call, rather than the status code, use token_request_response.json(). To make the values in the json easier to reference, save this as a variable.
 token_json = token_request_response.json()
     
 # Extract the access token from token_json, and save it in a varibale 
@@ -76,3 +76,4 @@ popularity = data["popularity"]
 # Put this together into a sentance, and use the Python print function to output a string
 print(name, "has", followers, "followers on Spotify, with an artist popularity of", popularity, "- their photo can be viewed via", image_url)
 ```
+You should get a response in the format '*artist's name* has *x* followers on Spotify, with an artist popularity of *y* - their photo can be viewed via *url link*.'
