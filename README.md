@@ -3,6 +3,7 @@
 This is a step-by-step guide to calling the Get Artist endpoint from the Spotify Web API.
 
 **Ingredients**
+
 You will need:
 - A Client ID and Client Secret (find these following instructions here https://developer.spotify.com/documentation/web-api/tutorials/getting-started#create-an-app)
 - The Spotify ID of your artist of choice (more details here https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids)
