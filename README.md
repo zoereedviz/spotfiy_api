@@ -16,7 +16,6 @@ Next we need to generate an access token, which is like authorisation for us to 
 import requests
     
 # Define the information we need to make the access token request. We are using the client_id and client_secret variables in our request:
-
 url = "https://accounts.spotify.com/api/token"
 headers = {"Content-Type": "application/x-www-form-urlencoded"}
 data = {
@@ -25,24 +24,14 @@ data = {
     "client_secret": client_secret
 }
    
-# Make a post request to the endpoint we just defined, and save it in a variable called token_response_request. This returns a status code telling us whether the API call was succesful - status code 200 indicates that the call was successful.
-    
+# Make a post request to the endpoint we just defined, and save it in a variable called token_response_request. This returns a status code telling us whether the API call was succesful - status code 200 indicates that the call was successful.    
 token_request_response = requests.post(url, headers=headers, data=data)
 
-print(token_request_response) 
-    
-# To return data from the API call, we need token_request_response.json(). To make the items in the json easier to reference, let's save this as a variable:
- 
+# To return data from the API call, we need token_request_response.json(). To make the items in the json easier to reference, let's save this as a variable: 
 token_json = token_request_response.json()
-
-print(token_json)
     
-# Now we want to extract the access token from the json, and save it as access_token:
-    
+# Now we want to extract the access token from the json, and save it as access_token:    
 access_token = token_json["access_token"]
-    
-print(access_token)
-
 ```
    
 Now we have our access token! So we have everything we need now to call Get Artist endpoint.
