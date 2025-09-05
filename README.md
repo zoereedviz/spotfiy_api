@@ -1,11 +1,11 @@
 We are going to query the Get Artist endpoint from the Spotify Web API.
 First get your Client ID and Client Secret following instructions in the Spotify documentation. Also find the Spotify ID of the artist you want to find information on.
     
-`client_id = "cf57b3d57fce410090a317ba93928ca8"
+    client_id = "cf57b3d57fce410090a317ba93928ca8"
     
-client_secret = "36790883650d40518807e761ac5a54af"
+    client_secret = "36790883650d40518807e761ac5a54af"
 
-artist_id = "3gN8Ihw22Vt9mnK97gbwMQ?si=7PLM0wLDQO2waNyJg4I0Sg"`
+    artist_id = "3gN8Ihw22Vt9mnK97gbwMQ?si=7PLM0wLDQO2waNyJg4I0Sg"
 
     
 Next we need to generate an access token, which is like authorisation for us to query the API (it will last an hour, after which a new one would need to be generated). Getting this access token requires querying a different endpoint.
