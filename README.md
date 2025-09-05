@@ -1,7 +1,11 @@
 ### 🎶 Querying the Spotify Get Artist API 🎶
 
-We are going to query the Get Artist endpoint from the Spotify Web API.
-First get your Client ID and Client Secret following instructions in the Spotify documentation. Also find the Spotify ID of the artist you want to find information on.
+This is a step-by-step guide to calling the Get Artist endpoint from the Spotify Web API.
+
+**Ingredients**
+You will need:
+- A Client ID and Client Secret (find these following instructions here https://developer.spotify.com/documentation/web-api/tutorials/getting-started#create-an-app)
+- The Spotify ID of your artist of choice (more details here https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids)
 
 ```python
 client_id = "xxx"
