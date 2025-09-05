@@ -16,7 +16,7 @@ client_id = "xxx"
     
 client_secret = "yyy"
 
-artist_id = "3gN8Ihw22Vt9mnK97gbwMQ?si=7PLM0wLDQO2waNyJg4I0Sg"
+artist_id = "3gN8Ihw22Vt9mnK97gbwMQ?si=U2KUXd7fT6O-gjvnCz4MFA"
 ```
     
 Next you need to generate an access token, which is like authorisation to call the API (each access token is valid for an hour, after which a new one needs to be generated). Getting this access token requires calling a different endpoint of the Spotify Web API.
