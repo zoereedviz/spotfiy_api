@@ -76,4 +76,4 @@ popularity = data["popularity"]
 # Put this together into a sentance, and use the Python print function to output a string
 print(name, "has", followers, "followers on Spotify, with an artist popularity of", popularity, "- their photo can be viewed via", image_url)
 ```
-You should get an output in the format '*artist's name* has *x* followers on Spotify, with an artist popularity of *y* - their photo can be viewed via *url link*.'
+You should get an output in the format '*artist's name* has *x* followers on Spotify, with an artist popularity of *y* - their photo can be viewed via *url link*'.
