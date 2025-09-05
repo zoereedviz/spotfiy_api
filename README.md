@@ -27,13 +27,11 @@ Make a post request to the endpoint defined above. Save it in a variable called 
     token_request_response = requests.post(url, headers=headers, data=data)
     print(token_request_response) 
     
-If we want to return data from the API call, we use token_request_response.json().
-    
-    print(token_request_response.json())
-    
-For simplicaity, and to make the items in the json easier to reference, let's save this as a variable
+To return data from the API call, use token_request_response.json(). To make the items in the json easier to reference, let's save this as a variable
+
     
     token_json = token_request_response.json()
+    print(token_json)
     
 Now we want to extract the access token from the json, and save it as access_token:
     
@@ -44,7 +42,7 @@ Now we want to extract the access token from the json, and save it as access_tok
 Now we have our access token! So we have everything we need now to call Get Artist endpoint.
 I want to return the artist's name, followers, popularity and a link to their profile image.
     
-Again, import the requests library:
+    # Import the requests library:
     import requests 
     
 Set the url variable. We use an f-string here to allow us to embed the artist_id varibale directly in a string.
