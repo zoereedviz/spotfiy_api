@@ -41,9 +41,9 @@ Now we want to extract the access token from the json, and save it as access_tok
     
 Now we have our access token! So we have everything we need now to call Get Artist endpoint.
 I want to return the artist's name, followers, popularity and a link to their profile image.
-    
-    # Import the requests library:
-    import requests 
+```python  
+Import the requests library:
+import requests 
     
 Set the url variable. We use an f-string here to allow us to embed the artist_id varibale directly in a string.
     url_artist_api = f"https://api.spotify.com/v1/artists/{artist_id}"
