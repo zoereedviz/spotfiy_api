@@ -8,7 +8,10 @@ You will need:
 - A Client ID and Client Secret (find these following instructions here https://developer.spotify.com/documentation/web-api/tutorials/getting-started#create-an-app)
 - The Spotify ID of your artist of choice (more details here https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids)
 
+### How-to
+
 ```python
+# Save your Client ID, Client Secret and Artist ID in variables
 client_id = "xxx"
     
 client_secret = "yyy"
@@ -16,13 +19,13 @@ client_secret = "yyy"
 artist_id = "3gN8Ihw22Vt9mnK97gbwMQ?si=7PLM0wLDQO2waNyJg4I0Sg"
 ```
     
-Next we need to generate an access token, which is like authorisation for us to query the API (it will last an hour, after which a new one would need to be generated). Getting this access token requires querying a different endpoint.
+Next you need to generate an access token, which is like authorisation to call the API (each access token is valid for an hour, after which a new one needs to be generated). Getting this access token requires calling a different endpoint of the Spotify Web API.
 
 ```python
-# Import the Python requests library:
+# Import the Python requests library
 import requests
     
-# Define the information we need to make the access token request. We are using the client_id and client_secret variables in our request:
+# Save the information needed to make the access token request in variables
 url = "https://accounts.spotify.com/api/token"
 headers = {"Content-Type": "application/x-www-form-urlencoded"}
 data = {
@@ -31,41 +34,37 @@ data = {
     "client_secret": client_secret
 }
    
-# Make a post request to the endpoint we just defined, and save it in a variable called token_response_request. This returns a status code telling us whether the API call was succesful - status code 200 indicates that the call was successful.    
+# Make a post request to the endpoint using the varibales you just defined, and save this request in another variable. This request returns a status code indicating whether the API call was succesful (status code 200 indicates success)    
 token_request_response = requests.post(url, headers=headers, data=data)
 
-# To return data from the API call, we need token_request_response.json(). To make the items in the json easier to reference, let's save this as a variable: 
+# To return data from the API call, rather than the status code, use token_request_response.json(). To make the values in the json easier to reference, save this as a variable 
 token_json = token_request_response.json()
     
-# Now we want to extract the access token from the json, and save it as access_token:    
+# Extract the access token from token_json, and save it in a varibale 
 access_token = token_json["access_token"]
 ```
    
-Now we have our access token! So we have everything we need now to call the Get Artist endpoint.
-Our goal is to return the artist's name, followers, popularity and a link to their profile image.
+This is the access token obtained! So you have everything you need to call the Get Artist endpoint.
+This guide will show you how to return the artist's name, followers, popularity and a link to their profile image.
 ```python  
-#Import the requests library:
+#Import the requests library
 import requests 
 
-# Set the url variable. We use an f-string here to allow us to embed the artist_id varibale directly in a string.
+# Set the url variable. An f-string is used here to embed the artist_id varibale in a string.
 url_artist_api = f"https://api.spotify.com/v1/artists/{artist_id}"
     
-# We also need to set a header - a header is like packaged up authentication. Public APIs don't require them but APIs that require authentication do.
+# Set the header. A header is like packaged up authentication - public APIs don't require them.
 headers_artist_api = {
     "Authorization": f"Bearer {access_token}"
 }
    
-# Save the response in a variable - again, this is a status code indicating whether the API call was successful.
+# Make a get request and save the response in a variable - again, this returns a status code indicating whether the API call was successful.
 response = requests.get(url=url_artist_api, headers=headers_artist_api)
-    
 
-    print(response.json()) # prints whole json response
-    
-# response.json() with return json data from the API. Let's save this as a variable so that it's simpler to reference:
+# To return data from the API call, use response.json(). Save this in a variable so that it's simpler to reference.
 data = response.json()
 
-# Pick out the bits of information we want from the json: 
-
+# Pick out the desired pieces of information from the json data, and save it in variables 
 followers = (data["followers"]["total"])
     
 image_url = print(data["images"][0]["url"])
@@ -74,8 +73,6 @@ name = (data["name"])
     
 popularity = (data["popularity"])
     
-    
-    # Putting this together into a sentance:
-    
-    print(name, "has", followers, "followers on Spotify, with an artist popularity of", popularity, "- their photo can be viewed via", image_url)
+# Put this together into a sentance, and use the Python print function to output a string
+print(name, "has", followers, "followers on Spotify, with an artist popularity of", popularity, "- their photo can be viewed via", image_url)
 ```
