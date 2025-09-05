@@ -1,4 +1,4 @@
-## 🎶 Query the Spotify Get Artist API using Python 🎶
+## 🎶 Querying the Spotify Get Artist API using Python 🎶
 
 This is a step-by-step guide to calling the Get Artist endpoint from the Spotify Web API.
 
