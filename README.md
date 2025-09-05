@@ -34,60 +34,41 @@ token_json = token_request_response.json()
 access_token = token_json["access_token"]
 ```
    
-Now we have our access token! So we have everything we need now to call Get Artist endpoint.
-I want to return the artist's name, followers, popularity and a link to their profile image.
+Now we have our access token! So we have everything we need now to call the Get Artist endpoint.
+Our goal is to return the artist's name, followers, popularity and a link to their profile image.
 ```python  
 #Import the requests library:
 import requests 
-```   
-Set the url variable. We use an f-string here to allow us to embed the artist_id varibale directly in a string.
-    url_artist_api = f"https://api.spotify.com/v1/artists/{artist_id}"
+
+# Set the url variable. We use an f-string here to allow us to embed the artist_id varibale directly in a string.
+url_artist_api = f"https://api.spotify.com/v1/artists/{artist_id}"
     
-We also need to set a header - public APIs don't require a header but APIs that require authentication do - a header is like packaged up authentication.
-    headers_artist_api = {
-        "Authorization": f"Bearer {access_token}"
-    }
+# We also need to set a header - a header is like packaged up authentication. Public APIs don't require them but APIs that require authentication do.
+headers_artist_api = {
+    "Authorization": f"Bearer {access_token}"
+}
+   
+# Save the response in a variable - again, this is a status code indicating whether the API call was successful.
+response = requests.get(url=url_artist_api, headers=headers_artist_api)
     
-    
-Set a response in a variable
-    response = requests.get(url=url_artist_api, headers=headers_artist_api)
-    
-    print(response) # indicates whetehr the API call was successful
+
     print(response.json()) # prints whole json response
     
-    // Let's pick out the bits of information we want. First we will put response.json() into a variable so its simpler to reference:
+# response.json() with return json data from the API. Let's save this as a variable so that it's simpler to reference:
+data = response.json()
+
+# Pick out the bits of information we want from the json: 
+
+followers = (data["followers"]["total"])
     
-    data = response.json()
+image_url = print(data["images"][0]["url"])
     
-    print(data["followers"]["total"]) # prints total followers
+name = (data["name"])
     
-    print(data["images"][0]["url"])  # prints the url of the artist's image
-    
-    print(data["name"]) # prints the artist's name
-    
-    print(data["popularity"]) # prints the artist's popularity
+popularity = (data["popularity"])
     
     
     # Putting this together into a sentance:
     
-    print(data["name"], "has", data["followers"]["total"], "followers on Spotify, with an artist popularity of", data["popularity"], "- their photo can be viewed via", data["images"][0]["url"])
-    
-    
-    
-    
-
-
-
-.. parsed-literal::
-
-    <Response [200]>
-    {'access_token': 'BQDqVtUcbnnHUyRfzWDuy_6AOOWe2fak5KLCQZVexNMU9Td84vTc-ow2NjS6cHtSNJyDPn0_nc5Dw3WTskwtQo2E8QCBJNC95fPRX0RxSz91t6HPIpvz_fHHBlBYa-lOeep8KuELlDQ', 'token_type': 'Bearer', 'expires_in': 3600}
-    BQDqVtUcbnnHUyRfzWDuy_6AOOWe2fak5KLCQZVexNMU9Td84vTc-ow2NjS6cHtSNJyDPn0_nc5Dw3WTskwtQo2E8QCBJNC95fPRX0RxSz91t6HPIpvz_fHHBlBYa-lOeep8KuELlDQ
-    <Response [200]>
-    {'external_urls': {'spotify': 'https://open.spotify.com/artist/6eXZu6O7nAUA5z6vLV8NKI'}, 'followers': {'href': None, 'total': 1222461}, 'genres': [], 'href': 'https://api.spotify.com/v1/artists/6eXZu6O7nAUA5z6vLV8NKI', 'id': '6eXZu6O7nAUA5z6vLV8NKI', 'images': [{'url': 'https://i.scdn.co/image/ab6761610000e5eba22264dfbad2d96ffc6ee2e0', 'height': 640, 'width': 640}, {'url': 'https://i.scdn.co/image/ab67616100005174a22264dfbad2d96ffc6ee2e0', 'height': 320, 'width': 320}, {'url': 'https://i.scdn.co/image/ab6761610000f178a22264dfbad2d96ffc6ee2e0', 'height': 160, 'width': 160}], 'name': 'Little Simz', 'popularity': 69, 'type': 'artist', 'uri': 'spotify:artist:6eXZu6O7nAUA5z6vLV8NKI'}
-    1222461
-    https://i.scdn.co/image/ab6761610000e5eba22264dfbad2d96ffc6ee2e0
-    Little Simz
-    69
-    Little Simz has 1222461 followers on Spotify, with an artist popularity of 69 - their photo can be viewed via https://i.scdn.co/image/ab6761610000e5eba22264dfbad2d96ffc6ee2e0
-
+    print(name, "has", followers, "followers on Spotify, with an artist popularity of", popularity, "- their photo can be viewed via", image_url)
+```
