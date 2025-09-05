@@ -65,13 +65,13 @@ response = requests.get(url=url_artist_api, headers=headers_artist_api)
 data = response.json()
 
 # Pick out the desired pieces of information from the json data, and save it in variables 
-followers = (data["followers"]["total"])
+followers = data["followers"]["total"]
     
-image_url = print(data["images"][0]["url"])
+image_url = data["images"][0]["url"]
     
-name = (data["name"])
+name = data["name"]
     
-popularity = (data["popularity"])
+popularity = data["popularity"]
     
 # Put this together into a sentance, and use the Python print function to output a string
 print(name, "has", followers, "followers on Spotify, with an artist popularity of", popularity, "- their photo can be viewed via", image_url)
