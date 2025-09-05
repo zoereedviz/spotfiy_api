@@ -60,7 +60,7 @@ Set a response in a variable
     print(response) # indicates whetehr the API call was successful
     print(response.json()) # prints whole json response
     
-    # Let's pick out the bits of information we want. First we will put response.json() into a variable so its simpler to reference:
+    // Let's pick out the bits of information we want. First we will put response.json() into a variable so its simpler to reference:
     
     data = response.json()
     
