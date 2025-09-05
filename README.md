@@ -10,8 +10,8 @@ artist_id = "3gN8Ihw22Vt9mnK97gbwMQ?si=7PLM0wLDQO2waNyJg4I0Sg"`
     
 Next we need to generate an access token, which is like authorisation for us to query the API (it will last an hour, after which a new one would need to be generated). Getting this access token requires querying a different endpoint.
     
-    `#Import the Python requests library:
-    import requests`
+    #Import the Python requests library:
+    import requests
     
 Define the information we need to make the access token request. We are using the client_id and client_secret variables in our request.
     `url = "https://accounts.spotify.com/api/token"
